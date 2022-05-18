@@ -1,49 +1,33 @@
 <?php
 
-$routes = [];
-
-function route($action, Closure $callback)
+function datos()
 {
-    global $routes;
-    $action = trim($action, '/');
-    $action = preg_replace('/{[^}]+}/', '(.+)',$action);
+    $datos = array();
+    $ex = explode("/", $_SERVER['REQUEST_URI']);
+   
+    unset($ex[0]);
+    unset($ex[1]);
 
-    $routes[$action] = $callback;
-}
-
-function dispatch($action)
-{
-  global $routes;
-  $action = trim($action, '/');
-  $callback = null;
-  $pararms = [];
-
-  foreach($routes as $route => $handler) 
-  {
-    if(preg_match("%^{$route}$%", $action, $matches) === 1) 
-    { 
-      $callback = $handler; 
-      unset($matches[0]);
-      $pararms = $matches; 
-      break;
-
+    foreach($ex as $index => $parametro)
+    {
+        if($parametro != "")
+        {
+        $datos[] = $parametro;
+        }
     }
-  }
 
-  if(!$callback || !is_callable($callback))
-  {
-    http_response_code(404); 
-    echo "404 - Not found"; 
-    exit;
-  }
+    if(!isset($datos[0]))
+    {
+      $datos[0] = false;
+    }
 
-  echo call_user_func($callback, ...$pararms);
+    return $datos;
 }
-
 
 function error_page()
 {
   http_response_code(404); 
-  echo "404 - Not found"; 
+  echo "404 - Not fou|"; 
   exit;
 }
+

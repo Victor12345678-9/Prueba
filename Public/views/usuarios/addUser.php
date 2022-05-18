@@ -26,8 +26,7 @@ require_once (LAYOUT_PATH."head2.php");
     <div class="container-fluid">
 
     <div class="row">
-        <div id="resultado"></div>
- 
+        <div id="mensajes"></div>
                             <div class="col-xl-12">
                                 <div class="card">
                                     <div class="card-header">
@@ -50,7 +49,7 @@ require_once (LAYOUT_PATH."head2.php");
                                                 <div class="tab-content text-muted mt-4 mt-md-0" id="v-pills-tabContent">
                                                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
-                                                    <form class="needs-validation" autocomplete="off" id="nuevo" method="POST">
+                                                    <form class="needs-validation" autocomplete="off" id="nuevo" method="POST" >
 
 
                                                     
@@ -58,14 +57,14 @@ require_once (LAYOUT_PATH."head2.php");
                                 <div class="col-md-3">
                                     <div class="mb-3 position-relative">
                                         <label class="form-label" for="nombre">Nombre</label>
-                                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" >
+                                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
                                     
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="mb-3 position-relative">
                                         <label class="form-label" for="apellido">Apellido</label>
-                                        <input type="text" class="form-control" name="apellido" placeholder="Apellido" >
+                                        <input type="text" class="form-control" name="apellido" placeholder="Apellido" required>
                                         
                                     </div>
                                 </div>
@@ -90,7 +89,7 @@ require_once (LAYOUT_PATH."head2.php");
 
                                    
                                        
-                                        <input type="hidden" class="form-control" name="edad" placeholder="Edad"  id="edad" min=18  >
+                                        <input type="hidden" class="form-control" name="edad" placeholder="Edad"  id="edad" min=18 requierd >
                                   
                                         
                                   
@@ -99,7 +98,7 @@ require_once (LAYOUT_PATH."head2.php");
                                 <div class="col-md-3">
                                         <div class="mb-3 position-relative">
                                         <label class="form-label" for="genero">Genero</label>
-                                        <select type="text" class="form-select" name="genero"  >
+                                        <select type="text" class="form-select" name="genero" required >
 
                                         <option  style="color:grey" value="" selected disabled>Seleccione Un Genero</option>
                                         <option>Masculino</option>
@@ -118,7 +117,7 @@ require_once (LAYOUT_PATH."head2.php");
                                 <div class="col-md-3">
                                         <div class="mb-3 position-relative">
                                         <label class="form-label" for="estadoCivil">Estado Civil</label>
-                                        <select type="text" class="form-select" name="estadoCivil"  >
+                                        <select type="text" class="form-select" name="estadoCivil" required >
 
                                         <option  style="color:grey" value="" selected disabled>Seleccione una opcion</option>
                                         <option>Casad@</option>
@@ -137,7 +136,7 @@ require_once (LAYOUT_PATH."head2.php");
                                 <div class="col-md-3">
                                         <div class="mb-3 position-relative">
                                         <label class="form-label" for="rfc">RFC</label>
-                                        <input type="text" class="form-control" name="rfc" placeholder="RFC" >
+                                        <input type="text" class="form-control" name="rfc" placeholder="RFC" required>
                                     </div>
                                 </div>
 
@@ -248,7 +247,7 @@ require_once (LAYOUT_PATH."head2.php");
                                     <div class="col-md-3">
                                     <div class="mb-3 position-relative">
                                         <label class="form-label" for="nomina">Nomina</label>
-                                        <input type="text"  class="form-control" name="nomina" placeholder="Nomina"   min=1>
+                                        <input type="text"  class="form-control" name="nomina" placeholder="Nomina"  required min=1>
                                     
                                     </div>
                                 </div>
@@ -259,7 +258,7 @@ require_once (LAYOUT_PATH."head2.php");
                                 <div class="col-md-3">
                                         <div class="mb-3 position-relative">
                                         <label class="form-label" for="departamento">Departamento</label>
-                                        <select type="number" class="form-select" name="departamento" >
+                                        <select type="number" class="form-select" name="departamento" required>
 
                                         <option  style="color:grey" value="" selected disabled>Seleccione Un Departamento</option>
                                         
@@ -281,7 +280,7 @@ require_once (LAYOUT_PATH."head2.php");
                                         <div class="col-md-3">
                                         <div class="mb-3 position-relative">
                                         <label class="form-label" for="puesto">Puesto</label>
-                                        <input type="text" class="form-control" name="puesto" placeholder="Puesto"  >
+                                        <input type="text" class="form-control" name="puesto" placeholder="Puesto" required >
                                     </div>
                                 </div>
 
@@ -314,8 +313,8 @@ require_once (LAYOUT_PATH."head2.php");
                                     </div><!-- end card-body -->
                                     
                                 </div><!-- end card -->
-                                <a type="button" class="btn btn-danger waves-effect" href="<?php echo HTTP_.ROOT_PATH_CORE; ?>/usersView">Regresar</a>
-                                <button class="btn btn-primary" id="btnGuardar" type="submit">Guardar</button>
+                                <a type="button" class="btn btn-danger waves-effect" href="./usersView">Cancelar</a>
+                                <button class="btn btn-primary" type="submit">Guardar</button>
                             </div><!-- end col -->
                                 
                                 
@@ -330,11 +329,11 @@ require_once (LAYOUT_PATH."head2.php");
     
     <?php   include_once (LAYOUT_PATH."footer2.php")  ?>
 
-                
+
 
     </body>
-    <script src="<?php echo HTTP_.ROOT_PATH_CORE;?>/Resources/helpers/ajax.js"></script>
-    <script src="../../../Resources/helpers/calcularEdad.js"></script>
+    <script src="<?php echo HTTP_.ROOT_PATH_CORE; ?>/Resources/helpers/calcularEdad.js"></script>
+    <script src="<?php echo HTTP_.ROOT_PATH_CORE; ?>/Resources/helpers/app.js"></script>
 
 
 </html>
